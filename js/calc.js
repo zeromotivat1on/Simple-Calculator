@@ -2,39 +2,36 @@ var buttons = document.getElementsByTagName('button');
 var display = document.getElementById('display');
 var history_text = document.getElementById('history_text');
 
-var display_font_size_em = 4;
+var display_font_size_em = 3;
 var angle = 'DEG';
 
 for (let currButton of buttons) {
     currButton.addEventListener('click', function() {
         if (this.innerHTML == '=' && display.value.length > 0 && display.value.includes('=') == false) {
 
-            history_text.innerHTML = display.value;
+            history_text.value = display.value;
             
             if (display.value.indexOf('^') > -1) {
                 let base = display.value.slice(0, display.value.indexOf('^'));
                 let exponent = display.value.slice(display.value.indexOf('^') + 1);
                 display.value = eval('Math.pow(' + base + ',' + exponent + ')');
-            } else if (display.value.indexOf(Math.E) != undefined) {
-                display.value = display.value.replace(Math.E, "e");
             } else {
                 display.value = eval(display.value);
             }
 
         } else if (this.innerHTML == 'C') {
 
-            history_text.innerHTML = '&nbsp;';
+            history_text.value = '';
             display.value = '';
 
         } else if (this.innerHTML == 'π') {
 
-            //history_text.innerHTML = `${display.value}π`;
             let wasPI = false;
             if(display.value.includes(Math.PI) == true || wasPI == true || display.value.length > 0) { 
                 display.value *= Math.PI; 
                 wasPI = true;
             }
-            else { display.value += Math.PI; }
+            else { display.value = Math.PI; }
 
         } else if (this.innerHTML == 'e') {
 
@@ -43,11 +40,11 @@ for (let currButton of buttons) {
                 display.value *= Math.E; 
                 wasE = true;
             }
-            else { display.value += Math.E; }
+            else { display.value = Math.E; }
 
         } else if (this.innerHTML == '%') {
 
-            history_text.innerHTML = `${display.value}%`;
+            history_text.value = `${display.value}%`;
             display.value = display.value / 100;
 
         } else if (this.innerHTML == 'cos') {
@@ -105,7 +102,7 @@ for (let currButton of buttons) {
 
         } else if (this.innerHTML === '√') {
 
-            history_text.innerHTML = `√${display.value}`;
+            history_text.value = `√${display.value}`;
             display.value = Math.sqrt(display.value);
             display.value = Math.fround(display.value);
     
@@ -133,11 +130,12 @@ for (let currButton of buttons) {
     
         } else {
 
-            if(display.value.length > 12) {
+            if(display.value.length > 16) {
                 if(display_font_size_em > 2) { display_font_size_em -= 0.25; }
                 display.style.fontSize = `${display_font_size_em}em`;
             } else {
-                display.style.fontSize = '4em';
+                display_font_size_em = 3;
+                display.style.fontSize = `${display_font_size_em}em`;
             }
             display.value += this.innerHTML;
 
