@@ -11,7 +11,7 @@
     <div class="calculator">
 
         <div class="history">
-            <div class="history_text" id="history_text">&nbsp;</div>
+            <input type="text" class="history_text" id="history_text" disabled>
             <input type="text" class="display" id="display" disabled>
         </div>
 
@@ -27,16 +27,16 @@
                 <button value="cos" class="trigonometric_operator alt_operator">cos</button>
                 <button value="sin" class="trigonometric_operator alt_operator">sin</button>
                 <button value="tan" class="trigonometric_operator alt_operator">tan</button>
-                <button value="pi" class="alt_operator">&#960;</button>
-                <button value="e" class="trigonometric_operator alt_operator">e</button>
+                <button value="pi" class="operator pi">&#960;</button>
+                <button value="e" class=" operator e">e</button>
             </div>
 
             <div class="row">
-                <button value="log" class="trigonometric_operator alt_operator">log</button>
-                <button value="ln" class="trigonometric_operator alt_operator">ln</button>
-                <button value="&lt;" class="alt_operator">&lt;</button>
-                <button value="+/-;" class="alt_operator">+/-</button>
-                <button value="%" class="alt_operator">%</button>
+                <button value="log" class="logs">log</button>
+                <button value="ln" class="logs">ln</button>
+                <button value="&lt;" class="alt_operator delete_char">&lt;</button>
+                <button value="+/-;" class="operator change_sign">+/-</button>
+                <button value="%" class="operator percents">%</button>
             </div>
             
             <div class="row">
@@ -46,6 +46,7 @@
                 <button value="+" class="operator">+</button>
                 <button value="&Sqrt;" class="operator">&Sqrt;</button>
             </div>
+
             <div class="row">
                 <button value="4">4</button>
                 <button value="5">5</button>
@@ -53,6 +54,7 @@
                 <button value="-" class="operator">-</button>
                 <button value="^" class="operator">^</button>
             </div>
+
             <div class="row">
                 <button value="1">1</button>
                 <button value="2">2</button>
@@ -60,6 +62,7 @@
                 <button value="*" class="operator">*</button>
                 <button value="!" class="operator">n!</button>
             </div>
+
             <div class="row">
                 <button value="C" class="clear">C</button>
                 <button value="0">0</button>
@@ -67,11 +70,13 @@
                 <button value="/" class="operator">/</button>
                 <button value="=" class="equal">=</button>
             </div>
+
         </div>
 
     </div>
 
     <script type="text/javascript" src="js/calc.js"></script>
+
 </body>
 
 </html>
