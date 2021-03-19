@@ -39,13 +39,14 @@ body {
     text-align: right;
 }
 
+input { border: 0; }
+
 .display {
     width: 100%;
     height: 94px;
     border: none;
     box-sizing: border-box;
     padding: 10px;
-    font-size: 4rem;
     background-color: rgb(25, 25, 25);
     color: whitesmoke;
     text-align: right;
@@ -105,34 +106,36 @@ button:hover {
     border-radius: 5px;
 }
 
-.trigonometric_operator {
+.logs {
+    color: rgb(72, 228, 0);
     font-size: 3em;
 }
 
-.operator:hover {
-    background-color: rgb(75, 75, 75);
+.trigonometric_operator {
+    color: rgb(0, 102, 255);
+    font-size: 3em;
 }
 
-.equal {
-    background-color: rgb(255, 180, 0);
-}
+.delete_char { color: rgb(178, 34, 34); }
 
-.equal:hover {
-    background-color: rgba(255, 180, 0, 0.8);
-}
+.pi { color: rgb(133, 27, 255); }
 
-.equal:active {
-    background-color: rgb(255, 180, 0);
-}
+.e { color: rgb(192, 0, 176); }
 
-.clear {
-    background-color: rgb(178, 34, 34);
-}
+.change_sign { color: rgb(0, 247, 214); }
 
-.clear:hover {
-    background-color: rgba(178, 34, 34, 0.8);
-}
+.percents { color: rgb(247, 111, 0); }
 
-.clear:active {
-    background-color: rgb(178, 34, 34);
-}
+.operator:hover { background-color: rgb(75, 75, 75); }
+
+.equal { background-color: rgb(255, 180, 0); }
+
+.equal:hover { background-color: rgba(255, 180, 0, 0.8); }
+
+.equal:active { background-color: rgb(255, 180, 0); }
+
+.clear { background-color: rgb(178, 34, 34); }
+
+.clear:hover { background-color: rgba(178, 34, 34, 0.8); }
+
+.clear:active { background-color: rgb(178, 34, 34); }
