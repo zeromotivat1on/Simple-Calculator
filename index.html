@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/calc.css">
+    <title>Calculator</title>
+</head>
+
+<body>
+    <div class="calculator">
+
+        <div class="history">
+            <div class="history_text" id="history_text">&nbsp;</div>
+            <input type="text" class="display" id="display" disabled>
+        </div>
+
+        <div class="buttons">
+
+            <div class="row">
+                <div class="angle_div angle">DEG</div>
+                <button value="RAD" class="angle">RAD</button>
+                <button value="DEG" class="angle">DEG</button>
+
+            </div>
+            <div class="row">
+                <button value="cos" class="trigonometric_operator alt_operator">cos</button>
+                <button value="sin" class="trigonometric_operator alt_operator">sin</button>
+                <button value="tan" class="trigonometric_operator alt_operator">tan</button>
+                <button value="cot" class="trigonometric_operator alt_operator">cot</button>
+            </div>
+
+            <div class="row">
+                <button value="lg" class="trigonometric_operator alt_operator">lg</button>
+                <button value="ln" class="trigonometric_operator alt_operator">ln</button>
+                <button value="pi" class="alt_operator">&#960;</button>
+                <button value="+/-;" class="alt_operator">+/-</button>
+                <button value="%" class="alt_operator">%</button>
+            </div>
+            
+            <div class="row">
+                <button value="7">7</button>
+                <button value="8">8</button>
+                <button value="9">9</button>
+                <button value="+" class="operator">+</button>
+                <button value="&Sqrt;" class="operator">&Sqrt;</button>
+            </div>
+            <div class="row">
+                <button value="4">4</button>
+                <button value="5">5</button>
+                <button value="6">6</button>
+                <button value="-" class="operator">-</button>
+                <button value="^" class="operator">^</button>
+            </div>
+            <div class="row">
+                <button value="1">1</button>
+                <button value="2">2</button>
+                <button value="3">3</button>
+                <button value="*" class="operator">*</button>
+                <button value="!" class="operator">!</button>
+            </div>
+            <div class="row">
+                <button value="C" class="clear">C</button>
+                <button value="0">0</button>
+                <button value="." class="separator">.</button>
+                <button value="/" class="operator">/</button>
+                <button value="=" class="equal">=</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="text/javascript" src="js/calc.js"></script>
+</body>
+
+</html>
