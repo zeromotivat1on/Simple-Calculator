@@ -1,0 +1,138 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgray;
+    font-family: sans-serif;
+}
+
+.calculator {
+    width: 500px;
+    padding-bottom: 15px;
+    border-radius: 7px;
+    background-color: rgb(50, 50, 50);
+}
+
+.history {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    background-color: red;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+.history_text {
+    background-color: rgb(25, 25, 25);
+    color: rgb(199, 199, 199);
+    padding: 10px;
+    font-size: 2rem;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    text-align: right;
+}
+
+.display {
+    width: 100%;
+    height: 94px;
+    border: none;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 4rem;
+    background-color: rgb(25, 25, 25);
+    color: whitesmoke;
+    text-align: right;
+}
+
+.buttons {
+    width: 100%;
+    height: 60%;
+}
+
+.row {
+    display: flex;
+    justify-content: space-around;
+    background-color: rgb(50, 50, 50);
+    padding: 0;
+}
+  
+button {
+    width: 80px;
+    padding: 5px;
+    border: none;
+    outline: none;
+    font-size: 4em;
+    background-color: rgb(50, 50, 50);
+    color: whitesmoke;
+    margin: 10px;
+    border-radius: 5px;
+}
+  
+button:hover {
+    background-color: rgb(75, 75, 75);
+}
+  
+.operator {
+    background-color: rgb(50, 50, 50);
+    color: rgb(255, 180, 0);
+}
+
+.alt_operator {
+    background-color: rgb(50, 50, 50);
+    color: rgb(255, 123, 0);
+}
+
+.angle {
+    font-size: 3em;
+    width: 100%;
+    color: rgb(255, 217, 0);
+}
+
+.angle_div {
+    width: 100%;
+    padding: 5px;
+    margin: 10px;
+    background-color: rgb(75, 75, 75);
+    color: whitesmoke;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.trigonometric_operator {
+    font-size: 3em;
+}
+
+.operator:hover {
+    background-color: rgb(75, 75, 75);
+}
+
+.equal {
+    background-color: rgb(255, 180, 0);
+}
+
+.equal:hover {
+    background-color: rgba(255, 180, 0, 0.85);
+}
+
+.equal:active {
+    background-color: rgb(255, 180, 0);
+}
+
+.clear {
+    background-color: rgb(178, 34, 34);
+}
+
+.clear:hover {
+    background-color: rgba(178, 34, 34, 0.85);
+}
+
+.clear:active {
+    background-color: rgb(178, 34, 34);
+}
