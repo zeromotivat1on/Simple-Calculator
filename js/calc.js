@@ -4,55 +4,40 @@ var history_text = document.getElementById('history_text');
 
 var display_font_size_em = 3;
 var angle = 'DEG';
+let save_zero = false;
 
 for (let currButton of buttons) {
     currButton.addEventListener('click', function() {
         if (this.innerHTML == '=' && display.value.length > 0 && display.value.includes('=') == false) {
 
             history_text.value = display.value;
-            
-            if (display.value.indexOf('^') > -1) {
-                 
-                console.log("LOOOL");
-                let base = display.value.slice(0, display.value.indexOf('^'));
-                let exponent = display.value.slice(display.value.indexOf('^') + 1);
-                display.value = eval('Math.pow(' + base + ',' + exponent + ')');
-                
-            } else {
-                
-            let temp = [], temp_index = 0, rest = '';
-            for(let i in display.value) {
-                if((display.value[i] == '+' || display.value[i] == '-' || display.value[i] == '*' ||
-                    display.value[i] == '/' || display.value[i] == '^')  && display.value.includes('(') == false) {
+            save_zero = false;
 
-                    temp[temp_index] = display.value.substring(0, display.value.indexOf(display.value[i]));
-                    temp_index++;
-                    rest = display.value.substring(display.value.indexOf(display.value[i]));
+            for(let i in display.value) {
+                if(display.value[i] == '^') {
+                    display.value = display.value.replace('^', '**');
                 }
             }
-            console.log(temp);
-            console.log(rest);
 
-            /*for(let i = 1; i < temp_index; ++i) {
-                display.value += eval(temp[i]);
-            }*/
-            console.log(display.value);
+            display.value = eval(display.value);
 
-            display.value = eval(display.value)
-            console.log(display.value);
-
-            }
         } else if (this.innerHTML == 'C') {
 
+            save_zero = false;
             history_text.value = '';
-            display.value = '';
+            display.value = '0';
 
         } else if (this.innerHTML == 'π') {
 
             let wasPI = false;
             if(display.value.includes(Math.PI) == true || wasPI == true || display.value.length > 0) { 
-                display.value *= Math.PI; 
-                wasPI = true;
+                if(display.value[0] == '0') {
+                    display.value = Math.PI;
+                    wasPI = true;
+                } else {
+                    display.value *= Math.PI; 
+                    wasPI = true;
+                }
             }
             else { display.value = Math.PI; }
 
@@ -60,8 +45,13 @@ for (let currButton of buttons) {
 
             let wasE = false;
             if(display.value.includes(Math.E) == true || wasE == true || display.value.length > 0) { 
-                display.value *= Math.E; 
-                wasE = true;
+                if(display.value[0] == '0') {
+                    display.value = Math.E;
+                    wasPI = true;
+                } else {
+                    display.value *= Math.E; 
+                    wasPI = true;
+                }
             }
             else { display.value = Math.E; }
 
@@ -71,6 +61,8 @@ for (let currButton of buttons) {
             display.value = display.value / 100;
 
         } else if (this.innerHTML == 'cos') {
+
+            history_text.value = `cos(${display.value})`;
 
             if(angle == 'DEG') {
                 display.value = Math.cos(toRadians(display.value));
@@ -82,6 +74,8 @@ for (let currButton of buttons) {
             
         } else if (this.innerHTML == 'sin') {
 
+            history_text.value = `sin(${display.value})`;
+
             if (angle == 'DEG') {
                 display.value = Math.sin(toRadians(display.value));
                 display.value = Math.fround(display.value);
@@ -92,6 +86,8 @@ for (let currButton of buttons) {
             }
 
         } else if (this.innerHTML == 'tan') {
+
+            history_text.value = `tan(${display.value})`;
 
             if (angle == 'DEG') {
                 display.value = Math.tan(toRadians(display.value));
@@ -171,6 +167,11 @@ for (let currButton of buttons) {
             display.value = Math.log(display.value);
             display.value = Math.fround(display.value);
     
+        } else if (this.innerHTML == '.') {
+    
+            save_zero = true;
+            display.value += this.innerHTML;
+    
         } else {
 
             if(display.value.length > 16) {
@@ -179,6 +180,11 @@ for (let currButton of buttons) {
             } else {
                 display_font_size_em = 3;
                 display.style.fontSize = `${display_font_size_em}em`;
+            }
+
+            if(display.value[0] == '0' && save_zero == false) {
+                display.value = display.value.slice(1);
+                save_zero = false;
             }
 
             display.value += this.innerHTML;
@@ -200,6 +206,9 @@ function toLenConv() {
     let calc = document.getElementById("main_calc_id");
     calc.className = 'main_calc calculator off';
 
+    let mass_conv = document.getElementById("main_Mass_conv");
+    mass_conv.className = 'main_Mass_conv Mass_conv off';
+
     let len_conv = document.getElementById("main_len_conv");
     len_conv.className = 'main_len_conv len_conv';
 
@@ -209,8 +218,23 @@ function toCalc() {
     let len_conv = document.getElementById("main_len_conv");
     len_conv.className = 'main_len_conv len_conv off';
 
+    let mass_conv = document.getElementById("main_Mass_conv");
+    mass_conv.className = 'main_Mass_conv Mass_conv off';
+
     let calc = document.getElementById("main_calc_id");
     calc.className = 'main_calc calculator';
+}
+
+function toMassConv() {
+    let calc = document.getElementById("main_calc_id");
+    calc.className = 'main_calc calculator off';
+
+    let len_conv = document.getElementById("main_len_conv");
+    len_conv.className = 'main_len_conv len_conv off';
+
+    let mass_conv = document.getElementById("main_Mass_conv");
+    mass_conv.className = 'main_Mass_conv Mass_conv';
+
 }
 
 // Feet to
@@ -234,7 +258,7 @@ function feetToInches(valNum) {
     document.getElementById("outputInches").innerHTML = valNum * 12;
 }
 
-// Meter to
+// Meters to
 function metersToFeet(valNum) {
     document.getElementById("outputFeet").innerHTML = valNum * 3.2808;
 }
@@ -294,5 +318,74 @@ function inchesToMiles(valNum) {
 }
 
 function inchesToInches(valNum) {
+    document.getElementById("outputInches").innerHTML = valNum;
+}
+
+//miligram to
+function MiligramToMiligram(valNum) {
+    document.getElementById("outputMiligram").innerHTML = valNum;
+}
+
+function MiligramToGram(valNum) {
+    document.getElementById("outputGram").innerHTML = valNum / 1000;
+}
+
+
+function MiligramToKilogram(valNum) {
+    document.getElementById("outputKilogram").innerHTML = valNum / 1000000;
+}
+
+function MiligramToT(valNum) {
+    document.getElementById("outputT").innerHTML = valNum / 1000000000;
+}
+
+//Gram
+function GramToMiligram(valNum) {
+    document.getElementById("outputMiligram").innerHTML = valNum * 1000;
+}
+
+function GramToGram(valNum) {
+    document.getElementById("outputGram").innerHTML = valNum;
+}
+
+function GramToKilogram(valNum) {
+    document.getElementById("outputKilogram").innerHTML = valNum / 1000;
+}
+
+function GramToT(valNum) {
+    document.getElementById("outputT").innerHTML = valNum / 1000000;
+}
+
+// Kilogram to
+function KilogramToMiligram(valNum) {
+    document.getElementById("outputMiligram").innerHTML = valNum * 100000;
+}
+
+function KilogramToGram(valNum) {
+    document.getElementById("outputGram").innerHTML = valNum * 1000;
+}
+
+function KilogramToKilogram(valNum) {
+    document.getElementById("outputKilogram").innerHTML = valNum;
+}
+
+function KilogramToT(valNum) {
+    document.getElementById("outputT").innerHTML = valNum / 1000;
+}
+
+// T to
+function TToMiligram(valNum) {
+    document.getElementById("outputMiligram").innerHTML = valNum / 1000000000
+}
+
+function TToGram(valNum) {
+    document.getElementById("outputGram").innerHTML = valNum / 1000000;
+}
+
+function TToKilogram(valNum) {
+    document.getElementById("outputMiles").innerHTML = valNum / 1000000;
+}
+
+function TToT(valNum) {
     document.getElementById("outputInches").innerHTML = valNum;
 }

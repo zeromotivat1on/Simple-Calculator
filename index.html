@@ -12,6 +12,7 @@
 
         <p class="main_calc to_calculator changer" onclick="toCalc()">Calculator</p>
         <p class="main_len_conv to_length_convert changer" onclick="toLenConv()">Length Converter</p>
+        <p class="main_mass_conv to_mass_convert changer" onclick="toMassConv()">Mass Converter</p>
 
     </div>
 
@@ -123,6 +124,44 @@
         <p>Meters: <span id="outputMeters"></span></p>
         <p>Miles: <span id="outputMiles"></span></p>
         <p>Inches: <span id="outputInches"></span></p>
+
+    </div>
+
+    <div class="main_Mass_conv Mass_conv off" id="main_Mass_conv">
+
+        <p>
+            <label>Miligrams</label>
+            <input class="display_Mass_conv" id="inputFeet" type="number" placeholder="Miligrams"
+            oninput="MiligramToMiligram(this.value), MiligramToGram(this.value), MiligramToKilogram(this.value), MiligramToT(this.value)" 
+            onchange="MiligramToMiligram(this.value), MiligramToGram(this.value), MiligramToKilogram(this.value), MiligramToT(this.value)">
+        </p>
+
+        <p>
+            <label>Grams</label>
+            <input class="display_Mass_conv" id="inputMeters" type="number" placeholder="Grams"
+            oninput="GramToMiligram(this.value), GramToGram(this.value), GramToKilogram(this.value), GramToT(this.value)" 
+            onchange="GramToMiligram(this.value), GramToGram(this.value), GramToKilogram(this.value), GramToT(this.value)">
+        </p>
+
+        <p>
+            <label>Kilograms</label>
+            <input class="display_Mass_conv" id="inputMiles" type="number" placeholder="Kilograms"
+            oninput="KilogramToMiligram(this.value), KilogramToGram(this.value), KilogramToKilogram(this.value), KilogramToT(this.value)" 
+            onchange="KilogramToMiligram(this.value), KilogramToGram(this.value), KilogramToKilogram(this.value), KilogramToT(this.value)">
+        </p>
+
+        <p>
+            <label>Tons</label>
+            <input class="display_Mass_conv" id="inputInches" type="number" placeholder="Tons"
+            oninput="TToMiligram(this.value), TToGram(this.value), TToKilogram(this.value), TToT(this.value)" 
+            onchange="TToMiligram(this.value), TToGram(this.value), TToKilogram(this.value), TToT(this.value)">
+        </p>
+
+        <p>Miligrams: <span id="outputMiligram"></span></p>
+        <p>Grams: <span id="outputGram"></span></p>
+        <p>Kilograms: <span id="outputKilogram"></span></p>
+        <p>Tons: <span id="outputT"></span></p>
+        
 
     </div>
 
