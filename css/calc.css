@@ -7,13 +7,37 @@ body {
     width: 100%;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: lightgray;
     font-family: sans-serif;
 }
 
-.calculator {
+.off {
+    display: none;
+}
+
+.choser {
+    display: flex;
+    justify-content: space-around;
+    width: 500px;
+    margin: 10px;
+    user-select: none;
+}
+
+.changer {
+    background-color: rgb(50, 50, 50);
+    color: whitesmoke;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.changer:hover {
+    background-color: rgb(75, 75, 75);
+}
+
+.calculator, .len_conv {
     width: 500px;
     padding-bottom: 15px;
     border-radius: 7px;
@@ -48,8 +72,28 @@ input { border: 0; }
     box-sizing: border-box;
     padding: 10px;
     background-color: rgb(25, 25, 25);
-    color: whitesmoke;
     text-align: right;
+    color: whitesmoke;
+    font-size: 3em;
+}
+
+.len_conv p {
+    color: whitesmoke;
+    padding: 5px 0px;
+}
+
+.display_len_conv {
+    width: 100%;
+    height: 100%px;
+    border: none;
+    box-sizing: border-box;
+    padding: 10px;
+    background-color: rgb(25, 25, 25);
+    color: whitesmoke;
+}
+
+.len_conv {
+    padding: 10px;
 }
 
 .buttons {
@@ -74,6 +118,7 @@ button {
     color: whitesmoke;
     margin: 10px;
     border-radius: 5px;
+    user-select: none;
 }
   
 button:hover {
@@ -104,6 +149,7 @@ button:hover {
     color: whitesmoke;
     text-align: center;
     border-radius: 5px;
+    user-select: none;
 }
 
 .logs {
