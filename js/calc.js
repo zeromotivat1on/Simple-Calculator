@@ -100,11 +100,27 @@ for (let currButton of buttons) {
                 display.value = number;
             }
 
-        } else if (this.innerHTML === '√') {
+        } else if (this.innerHTML == '√') {
 
             history_text.value = `√${display.value}`;
-            display.value = Math.sqrt(display.value);
-            display.value = Math.fround(display.value);
+
+            let temp = "", squared = "", rest = "";
+            let temp_changed = false;
+            for(let i in display.value) {
+                if(display.value[i] == '+' || display.value[i] == '-' || display.value[i] == '*' ||
+                        display.value[i] == '/' || display.value[i] == '^') {
+                        console.log(display.value.indexOf(display.value[i]));
+                        temp = display.value.substring(0, display.value.indexOf(display.value[i]));
+                        rest = display.value.substring(display.value.indexOf(display.value[i]));
+                        temp_changed = true;
+                        break;
+                }
+            }
+
+            if(!temp_changed) {  temp = display.value; }
+            squared = Math.sqrt(temp);
+            squared = Math.fround(squared);
+            display.value = eval(squared + rest);
     
         } else if (this.innerHTML == '+/-') {
 
@@ -137,6 +153,7 @@ for (let currButton of buttons) {
                 display_font_size_em = 3;
                 display.style.fontSize = `${display_font_size_em}em`;
             }
+
             display.value += this.innerHTML;
 
         }

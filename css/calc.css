@@ -116,6 +116,10 @@ button:hover {
     font-size: 3em;
 }
 
+.brackets {
+    color: darkgray;
+}
+
 .delete_char { color: rgb(178, 34, 34); }
 
 .pi { color: rgb(133, 27, 255); }
